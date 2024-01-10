@@ -61,3 +61,8 @@ const output = findDiagonalOrder( [
 ]);
 
 console.log('output', output);
+
+/***
+ * time complexity: O(n)
+ * space complexity: O(1)
+ */
