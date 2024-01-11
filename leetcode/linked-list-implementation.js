@@ -93,8 +93,9 @@ class LinkedList {
             if(current.data === data){
                 if(this.head === current){
                     this.head = current.next ? current.next : null;
+                } else{
+                    prev.next = current.next ? current.next : null;
                 }
-                prev.next = current.next ? current.next : null;
             }
             prev = current;
             current = current.next;
