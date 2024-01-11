@@ -33,7 +33,7 @@ class LinkedList {
             current = current.next;
         }
         
-        if(current.next === null){
+        if(current && current.next === null){
             console.log(current.data);
             console.log('-'.repeat(10));
         }
@@ -43,6 +43,66 @@ class LinkedList {
         const node = new LinkListNode(data);
         node.next = this.head; 
         this.head = node; 
+    }
+
+    removeNthLastNode(n){
+        if(this.head === null){
+            return this.head;
+        }
+
+        let left = this.head, right = this.head, i = 0;
+        while(i < n && right.next != null){
+            right = right.next;
+            i++;
+        }
+
+        while(right.next != null){
+            right = right.next;
+            left = left.next; 
+        }
+
+        if(this.head === left){
+            this.head = left.next;
+        } else {
+            left.next = left.next.next ? left.next.next : null;
+        }
+
+        return this.head;      
+    }
+
+    find(data){
+        let current = this.head;
+        while(current.next != null){
+            if(current.data === data){
+                return current.data;
+            }
+            current = current.next;
+        }
+
+        if(current.data === data){
+            return current.data;
+        }
+
+        return null;
+    }
+
+    remove(data){
+        let current = this.head;
+        let prev = null;
+        while(current.next != null){
+            if(current.data === data){
+                if(this.head === current){
+                    this.head = current.next ? current.next : null;
+                }
+                prev.next = current.next ? current.next : null;
+            }
+            prev = current;
+            current = current.next;
+        }
+
+        if(current && current.data === data){
+            prev.next = null;
+        }
     }
 
 }
@@ -60,5 +120,9 @@ linkedList.insertNodeAtHead('i');
 linkedList.insertNodeAtHead('j');
 linkedList.insertNodeAtHead('k');
 linkedList.insertNodeAtHead('l');
+let head = linkedList.removeNthLastNode(1);
+console.log('head', head);
 linkedList.printLinkedList();
-
+console.log('found a?', linkedList.find('a'));
+console.log('found a?', linkedList.find('b'));
+console.log('found a?', linkedList.find('c'));
