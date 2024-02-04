@@ -46,6 +46,19 @@ class MinHeap<T> {
     print(){
         console.log(this.heap);
     }
+    
+    // traversal
+    // insert 
+    // delete
+    
+
+    getSize(){
+        return this.size;
+    }
+
+    getMin(){
+        return this.size > 0 ? this.heap[0] : null;
+    }
 }
 
 
