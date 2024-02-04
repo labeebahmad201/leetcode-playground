@@ -8,14 +8,16 @@ class MinHeap<T> {
         this.size = 0;
     }
     
-    heapify(arr, i){
+    heapify(i){
         let smallest = i;
         let left = 2*i + 1;
         let right = 2*i + 2;
+        // out of bound check to make sure left child exists
         if(left < this.size && this.heap[left] < this.heap[smallest]){
             smallest = left;
         }
         
+        // out of bound check to make sure right child exists
         if(right < this.size && this.heap[right] < this.heap[smallest]){
             smallest = right;    
        }
@@ -25,7 +27,7 @@ class MinHeap<T> {
             this.heap[i] = this.heap[smallest];
             this.heap[smallest] = temp;
             
-            this.heapify(arr, i);
+            this.heapify(i);
         }
     }
     
@@ -36,7 +38,7 @@ class MinHeap<T> {
         }
         
         for(let i = this.size - 1; i >= 0; i--){
-            this.heapify(arr, i);
+            this.heapify(i);
         }
         
     }
