@@ -211,3 +211,58 @@ var topKFrequent = function (nums, k) {
 
 
 
+///.................................................................................................................
+
+
+// O(n) solution
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var topKFrequent = function (nums, k) {
+
+    let map = {};
+    for(let i =0; i < nums.length; i++){ // O(n)
+        if(map[nums[i]]){
+            map[nums[i]]++;
+        } else {
+            map[nums[i]] = 1;
+        }
+    }
+
+    let count = new Array(nums.length);
+    const keys = Object.keys(map);  // O(n)
+    for(let i = 0; i < keys.length; i++){ // O(n)
+        let number = keys[i];
+        let frequency = map[number];
+        if(!count[frequency]){
+            count[frequency] = [number];
+        } else {
+            count[frequency].push(number);
+        }
+    }
+
+    let result = [];
+    for(let i= count.length - 1; i >= 0; i--){ // O(n)
+        if(count[i]){
+            for(let j = 0; j < count[i].length; j++){  
+                if(result.length < k){
+                    result.push(count[i][j]);
+                } else {
+                    break;
+                }
+            }
+        }
+
+        if(result.lenght >= k){
+            break;
+        }
+    }
+
+    return result;
+
+};
+
+topKFrequent([1,1,1,2,2,3], 2); // [1,2]
+
