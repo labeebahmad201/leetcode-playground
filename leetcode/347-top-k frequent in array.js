@@ -255,7 +255,7 @@ var topKFrequent = function (nums, k) {
             }
         }
 
-        if(result.lenght >= k){
+        if(result.length >= k){
             break;
         }
     }
