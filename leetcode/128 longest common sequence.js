@@ -27,6 +27,7 @@ var longestConsecutive = function(nums) {
 };
 
 // time complexity = O(n)
-// space complexity = O()
+// space complexity = O(n)
+
 
 console.log('LCS', longestConsecutive([100,4,200,1,3,2])); // 4
