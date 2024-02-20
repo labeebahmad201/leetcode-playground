@@ -16,3 +16,5 @@ var missingNumber = function(nums) {
         i++;
     }
 };
+
+missingNumber([3,0,1]); // 2
